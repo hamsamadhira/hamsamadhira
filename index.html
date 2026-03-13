@@ -4,19 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hamsa's Digital Space</title>
-  <subtitle> CS + Neuroscience | Music | Travel | Curiosity</subtitle>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <nav class="navbar">
-      <h1 class="logo">Hamsa's Digital Space</h1>
+      <div class="logo">Hamsa's Digital Space</div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="interests.html">My Interests</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="passions.html">My World</a></li>
       </ul>
     </nav>
   </header>
@@ -24,49 +23,91 @@
   <main class="container">
     <section class="hero">
       <div class="hero-text">
-        <h1>Welcome to My Website</h1>
-        <p>
-          Hello! My name is Hamsa, and this website is a small introduction to who I am and what I care about.
-          I am someone who enjoys learning, building new ideas, and exploring creative ways to combine technology,
-          leadership, and personal growth. I am especially interested in how websites, design, and digital tools can
-          help people communicate their stories in a meaningful and engaging way. That is one reason I enjoyed building
-          this site. It gave me the chance to not only practice HTML and CSS, but also to think about how design choices
-          affect a visitor’s experience.
+        <p class="eyebrow">CS + Neuroscience | Music | Travel | Curiosity</p>
+        <h1>Hi, I'm Hamsa.</h1>
+        <p class="lead">
+          I’m a Computer Science and Neuroscience student who loves building, exploring,
+          and finding meaning in both data and everyday experiences.
         </p>
+
         <p>
-          Outside of academics, I am passionate about projects that involve creativity, communication, and problem-solving.
-          I enjoy working on ideas that bring structure to information while also making it visually appealing. Whether I
-          am organizing content, writing, or designing something simple but polished, I like creating work that feels both
-          useful and personal. I also value growth, curiosity, and consistency. These qualities motivate me to keep learning
-          new technical skills and improve with each project I complete.
+          Welcome to my little corner of the internet. I wanted this website to feel less
+          like a formal assignment and more like a snapshot of who I am. I’m someone who
+          is constantly moving between different worlds: technology and creativity, logic
+          and emotion, structure and spontaneity. On one side, I’m deeply interested in
+          computer science and the way technology can solve real problems, create new tools,
+          and transform how people connect with information. On the other side, I’m equally
+          drawn to neuroscience, because understanding the brain means understanding memory,
+          behavior, emotion, and what makes us human.
         </p>
+
         <p>
-          This website highlights a little about me and one of the areas I enjoy most: blending personal interests with
-          digital creation. On the next page, I share more about some of the topics and activities I care about, along
-          with a few examples that reflect my interests. My goal for this website is to create something clean, welcoming,
-          and easy to navigate while meeting all the project requirements. I hope it gives a clear sense of who I am and
-          what I enjoy. Thank you for visiting my website.
+          Outside the classroom, some of the things I love most are music and travel.
+          Music is a huge part of how I experience life. It shapes my mood, helps me
+          focus, and makes moments feel bigger and more memorable. Whether it’s live
+          performances, discovering new artists, or replaying songs that feel tied to
+          a particular season of life, music always finds a way to stay with me.
+          Travel inspires me in a similar way. I love seeing new cities, noticing
+          architecture, collecting small moments, and experiencing how different places
+          have their own energy and rhythm.
         </p>
+
+        <p>
+          This website brings those parts of me together. It’s about who I am, what I
+          care about, and the ideas that keep me curious. I wanted the design to feel
+          warm, expressive, and colorful while still being clean and easy to navigate.
+          On the next page, I share more about the interests that shape me most — from
+          music and travel to the connection between computer science and neuroscience.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="passions.html" class="btn btn-primary">Explore My World</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
       </div>
 
       <div class="hero-image">
-        <img src="" alt="">
+        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80" alt="Concert lights and music atmosphere">
       </div>
     </section>
 
-    <section class="contact-section">
-      <h2>Contact Me</h2>
-      <p>You can reach me through the links below:</p>
+    <section class="cards-section">
+      <div class="mini-card">
+        <h2>Currently Inspired By</h2>
+        <p>Live music, colorful cities, brain science, code that solves real problems, and moments that feel cinematic.</p>
+      </div>
+
+      <div class="mini-card">
+        <h2>My Vibe</h2>
+        <p>Creative, curious, ambitious, thoughtful — with playlists and travel photos attached to almost every memory.</p>
+      </div>
+
+      <div class="mini-card">
+        <h2>Favorite Themes</h2>
+        <p>Technology, identity, emotion, movement, learning, and the connection between science and art.</p>
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <p>"Curiosity is what connects everything I love — from code to music to the human mind."</p>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2>Contact</h2>
       <p>
-        <a href="mailto: hamsa.madhira@gmail">Email Me</a> |
-        <a href="https://www.linkedin.com/in/hamsa-madhira/" target="_blank">LinkedIn</a> |
-        <a href="https://github.com/hamsamadhira" target="_blank">GitHub</a>
+        I’d love to connect. Feel free to reach out through email or find me online.
       </p>
+      <div class="contact-links">
+        <a href="mailto:yourname@example.com">Email</a>
+        <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        <a href="https://github.com/" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 Hamsa. All rights reserved.</p>
+    <p>Made with curiosity, color, and a lot of personality.</p>
   </footer>
 </body>
 </html>
