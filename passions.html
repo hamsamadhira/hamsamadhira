@@ -125,7 +125,6 @@
     .drop-text strong { font-size: .88rem; font-weight: 600; }
     .drop-text small  { font-size: .72rem; color: #8888a0; }
 
-    /* burger */
     .nav-burger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: .3rem;
@@ -139,7 +138,6 @@
     .nav-burger.open span:nth-child(2) { opacity: 0; }
     .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ══ FOOTER (inlined from shared.css) ═══════════════════ */
     #main-footer {
       position: relative; z-index: 1;
       margin-top: 5rem;
@@ -218,6 +216,8 @@
       .footer-bar { flex-direction: column; gap: .4rem; }
       .container { padding: 0 1.2rem; }
     }
+
+   
     .perform-hero {
       padding: calc(var(--nav-h) + 5rem) 0 3.5rem;
       position: relative; z-index: 1;
@@ -262,11 +262,13 @@
       box-shadow: 0 0 12px rgba(255,43,84,.5);
     }
 
+    
     .gallery-section {
       position: relative; z-index: 1;
       padding: 4rem 0 0;
     }
 
+    /* featured hero photo */
     .gallery-featured {
       width: 100%;
       aspect-ratio: 21/9;
@@ -431,6 +433,7 @@
       font-style: italic; color: rgba(255,43,84,.85);
     }
 
+    /* pull quote */
     .desc-quote {
       border-left: 2px solid var(--red);
       padding: 1.4rem 1.8rem;
@@ -452,6 +455,7 @@
       color: var(--red);
     }
 
+  
     @media (max-width: 900px) {
       .gallery-strip    { grid-template-columns: repeat(3, 1fr); }
       .gallery-strip-2  { grid-template-columns: repeat(3, 1fr); }
@@ -486,7 +490,7 @@
   <section class="gallery-section">
     <div class="container">
 
-     <img src="your-photo.jpg" alt="your description">
+     
       <div class="gallery-featured">
         <div class="gallery-ph">
           <span class="ph-icon">📸</span>
@@ -494,7 +498,7 @@
         </div>
       </div>
 
- 
+     
       <div class="gallery-strip">
         <div class="gallery-thumb"><div class="thumb-ph">🎤</div></div>
         <div class="gallery-thumb"><div class="thumb-ph">🎶</div></div>
@@ -503,6 +507,7 @@
         <div class="gallery-thumb"><div class="thumb-ph">🎙️</div></div>
       </div>
 
+      
       <div class="gallery-strip-2">
         <div class="gallery-thumb"><div class="thumb-ph">🎸</div></div>
         <div class="gallery-thumb"><div class="thumb-ph">🎤</div></div>
@@ -545,6 +550,7 @@
             </p>
           </div>
 
+          <!-- ✏️ PULL QUOTE — your words -->
           <div class="desc-quote">
             <p>"Replace this with something you actually feel about being on stage — a truth, a feeling, a line that sounds like you."</p>
             <cite>— Hamsa</cite>
