@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamsa | Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --red: #ff2b54;
+      --red-line: rgba(255, 43, 84, 0.22);
+      --bg: #060608;
+      --bg2: #0a0a0d;
+      --text: #f0f0f4;
+      --muted: #9898a8;
+      --card-bg: rgba(255,255,255,0.03);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    #pageGlow {
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,43,84,0.13) 0%, rgba(255,43,84,0.05) 40%, transparent 70%);
+      filter: blur(32px);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      z-index: 0;
+      transition: left 0.08s, top 0.08s;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(6,6,8,0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--red);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .dropdown > a {
+      display: inline-block;
+      padding-right: 0.8rem;
+    }
+
+    .dropdown > a::before {
+      content: '▾';
+      position: absolute;
+      right: -0.1rem;
+      top: 50%;
+      transform: translateY(-52%);
+      font-size: 0.7rem;
+      color: var(--muted);
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .dropdown:hover > a::before {
+      transform: translateY(-52%) rotate(180deg);
+      color: var(--text);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 0.9rem);
+      left: 0;
+      min-width: 180px;
+      list-style: none;
+      padding: 0.5rem 0;
+      background: rgba(10,10,13,0.96);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+      z-index: 200;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.72rem 1rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: 0.03em;
+    }
+
+    .dropdown-menu a:hover {
+      background: rgba(255,43,84,0.08);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-section {
+      padding: 10rem 0 5rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.4rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    .contact-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-copy {
+      max-width: 700px;
+      color: #b8b8c8;
+      font-size: 1rem;
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 1.4rem;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--red-line);
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-card a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    .contact-card a:hover {
+      color: var(--red);
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 1rem 1.2rem;
+      }
+
+      .nav-links {
+        gap: 1.1rem;
+      }
+
+      .container {
+        padding: 0 1.2rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="pageGlow"></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">HAMSA<span>.</span></a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Intro</a></li>
+      <li><a href="home.html">About</a></li>
+
+      <li class="dropdown">
+        <a href="interests.html">Where I</a>
+        <ul class="dropdown-menu">
+          <li><a href="build.html">Build</a></li>
+          <li><a href="create.html">Create</a></li>
+          <li><a href="perform.html">Perform</a></li>
+          <li><a href="collect.html">Collect</a></li>
+        </ul>
+      </li>
+
+      <li><a href="contact.html" class="active">Contact Me</a></li>
+    </ul>
+  </nav>
+
+  <section class="contact-section">
+    <div class="container">
+      <p class="eyebrow">Get in touch</p>
+      <h1 class="contact-title">Contact Me</h1>
+      <p class="contact-copy">
+        Thanks for stopping by. Whether you want to talk about projects, health-tech,
+        AI, design, music, or just say hi — you can find me here.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <p class="contact-label">Email</p>
+          <a href="mailto:yourname@email.com">hamsa.madhira@gmail.com</a>
+        </div>
+
+        <div class="contact-card">
+          <p class="contact-label">GitHub</p>
+          <a href="https://github.com/yourusername" target="_blank">https://github.com/hamsamadhira</a>
+        </div>
+
+        <div class="contact-card">
+          <p class="contact-label">LinkedIn</p>
+          <a href="https://linkedin.com/in/yourusername" target="_blank">https://www.linkedin.com/in/hamsa-madhira/</a>
+        </div>
+
+        <div class="contact-card">
+          <p class="contact-label">Resume</p>
+          <a href="resume.pdf" target="_blank">View Resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const glow = document.getElementById('pageGlow');
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+  </script>
+</body>
+</html>
