@@ -1,10 +1,16 @@
 const heroGlow = document.getElementById("heroGlow");
 const heroTitle = document.getElementById("heroTitle");
+const pageGlow = document.getElementById("pageGlow");
 
 document.addEventListener("mousemove", (event) => {
   if (heroGlow) {
     heroGlow.style.left = `${event.clientX}px`;
     heroGlow.style.top = `${event.clientY}px`;
+  }
+
+  if (pageGlow) {
+    pageGlow.style.left = `${event.clientX}px`;
+    pageGlow.style.top = `${event.clientY}px`;
   }
 
   if (heroTitle) {
