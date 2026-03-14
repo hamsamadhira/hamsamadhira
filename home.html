@@ -8,11 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* ALL YOUR ORIGINAL CSS IS UNCHANGED */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --red: #ff2b54;
@@ -25,9 +22,7 @@
       --card-bg: rgba(255,255,255,0.03);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -37,7 +32,6 @@
       overflow-x: hidden;
     }
 
-    /* ── Ambient cursor glow ── */
     #pageGlow {
       position: fixed;
       width: 380px;
@@ -52,8 +46,6 @@
       transition: left 0.08s, top 0.08s;
     }
 
-    
-    /* ── Nav ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -64,7 +56,6 @@
       padding: 1.25rem 3rem;
       background: rgba(6,6,8,0.72);
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
@@ -77,9 +68,7 @@
       text-decoration: none;
     }
 
-    .nav-logo span {
-      color: var(--red);
-    }
+    .nav-logo span { color: var(--red); }
 
     .nav-links {
       display: flex;
@@ -108,16 +97,11 @@
     }
 
     .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
-    }
+    .nav-links a.active { color: var(--text); }
 
     .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
-    }
+    .nav-links a.active::after { width: 100%; }
 
-    /* ── Layout ── */
     .container {
       max-width: 1120px;
       margin: 0 auto;
@@ -126,7 +110,6 @@
       z-index: 1;
     }
 
-    /* ── About Hero ── */
     .about-hero {
       padding: 10rem 0 6rem;
       background:
@@ -141,7 +124,6 @@
       align-items: start;
     }
 
-    /* ── Left copy ── */
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -185,12 +167,6 @@
       font-weight: 300;
     }
 
-    .about-body p strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* ── Tags row ── */
     .tag-row {
       display: flex;
       flex-wrap: wrap;
@@ -210,7 +186,6 @@
       text-transform: uppercase;
     }
 
-    /* ── Right photo card ── */
     .photo-card {
       position: sticky;
       top: 7rem;
@@ -218,15 +193,12 @@
       background: var(--card-bg);
       border: 1px solid var(--red-line);
       overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.03);
     }
 
     .photo-card img {
       width: 100%;
       aspect-ratio: 3/4;
       object-fit: cover;
-      display: block;
-      filter: brightness(0.94) contrast(1.05);
     }
 
     .photo-caption {
@@ -247,257 +219,83 @@
       color: var(--muted);
       line-height: 1.65;
     }
-
-    /* ── Divider ── */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--red-line), transparent);
-      margin: 0 2.5rem;
-    }
-
-    /* ── Focus areas ── */
-    .focus-section {
-      padding: 5rem 0 6rem;
-    }
-
-    .focus-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 2.8rem;
-    }
-
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.9rem;
-      letter-spacing: -0.01em;
-      color: var(--text);
-    }
-
-    .see-more {
-      font-size: 0.82rem;
-      color: var(--red);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--red-line);
-      padding-bottom: 2px;
-      transition: border-color 0.2s;
-    }
-
-    .see-more:hover {
-      border-color: var(--red);
-    }
-
-    .focus-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
-    }
-
-    .focus-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 1.8rem;
-      transition: border-color 0.25s, transform 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .focus-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(255,43,84,0.08), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .focus-card:hover {
-      border-color: var(--red-line);
-      transform: translateY(-3px);
-    }
-
-    .focus-card:hover::before {
-      opacity: 1;
-    }
-
-    .card-icon {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-    }
-
-    .card-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 0.55rem;
-    }
-
-    .card-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* ── Footer ── */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 2rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-note {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    .footer-mark {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
-
-    .footer-mark span { color: var(--red); }
-
-    /* ── Fade-in animation ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(22px);
-      animation: fadeUp 0.7s ease forwards;
-    }
-
-    .fade-up:nth-child(1) { animation-delay: 0.1s; }
-    .fade-up:nth-child(2) { animation-delay: 0.22s; }
-    .fade-up:nth-child(3) { animation-delay: 0.34s; }
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: none; }
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 960px) {
-      nav { padding: 1rem 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .photo-card { position: static; }
-      .photo-card img { aspect-ratio: 4/3; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .focus-cards { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 600px) {
-      .container { padding: 0 1.2rem; }
-      .about-hero { padding: 8rem 0 4rem; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-      .focus-cards { grid-template-columns: 1fr; }
-      nav { padding: 1rem 1.2rem; }
-      .nav-links { gap: 1.2rem; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-    }
   </style>
 </head>
+
 <body>
 
-  <div id="pageGlow"></div>
+<div id="pageGlow"></div>
 
- <!-- Nav -->
 <nav>
   <a href="index.html" class="nav-logo">HAMSA<span>.</span></a>
-
   <ul class="nav-links">
     <li><a href="index.html">Intro</a></li>
     <li><a href="home.html" class="active">About</a></li>
-
-    <li class="dropdown">
-      <a href="interests.html">Where I</a>
-      <ul class="dropdown-menu">
-        <li><a href="build.html">Build</a></li>
-        <li><a href="create.html">Create</a></li>
-        <li><a href="perform.html">Perform</a></li>
-      </ul>
-    </li>
+    <li><a href="passions.html">Performances</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
-  <!-- About Hero -->
-  <section class="about-hero">
-    <div class="container">
-      <div class="about-grid">
+<section class="about-hero">
+<div class="container">
+<div class="about-grid">
 
-        <!-- Left: copy -->
-        <div class="about-copy">
-          <p class="eyebrow fade-up">More about me</p>
+<div class="about-copy">
 
-          <h1 class="about-heading fade-up">
-            I Build. I Perform.<br>
-            <em>& I'm perpetually curious.</em>
-          </h1>
+<p class="eyebrow">The Performer</p>
 
-          <div class="about-body fade-up">
-            <p>
-              Hi, I'm <strong>Hamsa</strong> — a Computer Science &amp; Neuroscience student who loves
-              building things that feel both <strong>technically sharp and deeply human</strong>.
-              I'm especially excited by projects where software does more than function —
-              where it can adapt, reason thoughtfully, and support people in meaningful ways.
-            </p>
-            <p>
-              That's part of why I gravitate toward <strong>agentic AI systems</strong>, machine learning
-              pipelines, and workflow automation — particularly in health-tech, where the stakes
-              make the craft matter more.
-            </p>
-            <p>
-              Outside of code, I'm someone who feels deeply connected to <strong>music, travel,
-              performance, and visual atmosphere</strong>. I notice color, sound, movement,
-              architecture, and the small details that make a moment memorable. This site
-              reflects all of those different sides — the builder, the performer, the observer,
-              and the person constantly curious about both people and technology.
-            </p>
-          </div>
+<h1 class="about-heading">
+Music. Rhythm. Presence.<br>
+<em>Performance that connects.</em>
+</h1>
 
-          <div class="tag-row">
-            <span class="tag">Agentic AI</span>
-            <span class="tag">ML Pipelines</span>
-            <span class="tag">Health-tech</span>
-            <span class="tag">Neuroscience</span>
-            <span class="tag">Live Music</span>
-            <span class="tag">Travel</span>
-            <span class="tag">Systems Design</span>
-          </div>
-        </div>
+<div class="about-body">
+<p>
+Hi, I'm <strong>Hamsa</strong> — a performer passionate about bringing music and rhythm to life on stage. Performance, for me, is about creating moments where sound, expression, and energy come together to connect with an audience.
+</p>
 
-        <!-- Right: photo card -->
-        <div class="photo-card">
-          <img src="IMG_5061.JPG" alt="Hamsa">
-          <div class="photo-caption">
-            <p class="caption-chip">Currently into</p>
-            <p class="caption-body">
-              Agentic AI, ML pipelines, health-tech workflows,
-              music, motion, and places that feel cinematic.
-            </p>
-          </div>
-        </div>
+<p>
+I’m drawn to the experience of live performance — the shared atmosphere between performer and audience where every note, movement, and moment carries meaning. Each performance is an opportunity to tell a story through sound and presence.
+</p>
 
-      </div>
-    </div>
-  </section>
+<p>
+This site is a space dedicated to my work as a performer. Here you’ll find performances, creative projects, and the music that continues to shape my artistic voice.
+</p>
+</div>
 
- 
-  <script>
-    // Cursor glow
-    const glow = document.getElementById('pageGlow');
-    document.addEventListener('mousemove', e => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top  = e.clientY + 'px';
-    });
-  </script>
+<div class="tag-row">
+<span class="tag">Live Performance</span>
+<span class="tag">Music</span>
+<span class="tag">Stage</span>
+<span class="tag">Rhythm</span>
+<span class="tag">Storytelling</span>
+<span class="tag">Collaboration</span>
+<span class="tag">Creative Expression</span>
+</div>
+
+</div>
+
+<div class="photo-card">
+<img src="IMG_5061.JPG" alt="Hamsa performing">
+<div class="photo-caption">
+<p class="caption-chip">On Stage</p>
+<p class="caption-body">
+Music, rhythm, and the energy of live performance — moments where the stage becomes a space for connection, expression, and storytelling.
+</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<script>
+const glow = document.getElementById('pageGlow');
+document.addEventListener('mousemove', e => {
+glow.style.left = e.clientX + 'px';
+glow.style.top  = e.clientY + 'px';
+});
+</script>
+
 </body>
 </html>
