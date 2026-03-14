@@ -52,6 +52,7 @@
       transition: left 0.08s, top 0.08s;
     }
 
+    
     /* ── Nav ── */
     nav {
       position: fixed;
@@ -408,16 +409,27 @@
 
   <div id="pageGlow"></div>
 
-  <!-- Nav -->
-  <nav>
-    <a href="index.html" class="nav-logo">HAMSA<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Intro</a></li>
-      <li><a href="home.html" class="active">About</a></li>
-      <li><a href="interests.html">My World</a></li>
-      <li><a href="passions.html">Passions</a></li>
-    </ul>
-  </nav>
+ <!-- Nav -->
+<nav>
+  <a href="index.html" class="nav-logo">HAMSA<span>.</span></a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Intro</a></li>
+    <li><a href="home.html" class="active">About</a></li>
+
+    <li class="dropdown">
+      <a href="interests.html">Where I</a>
+      <ul class="dropdown-menu">
+        <li><a href="build.html">Build</a></li>
+        <li><a href="create.html">Create</a></li>
+        <li><a href="perform.html">Perform</a></li>
+        <li><a href="perform.html">Collect</a></li>
+      </ul>
+    </li>
+
+    <li><a href="passions.html">Passions</a></li>
+  </ul>
+</nav>
 
   <!-- About Hero -->
   <section class="about-hero">
