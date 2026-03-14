@@ -3,142 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamsa Madhira| Digital Space</title>
+  <title>Hamsa | Digital Corner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
     <nav class="navbar">
-      <div class="brand">Hamsa Madhira</div>
+      <a class="brand" href="index.html">HAMSA</a>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="passions.html">My World</a></li>
+        <li><a href="passions.html">Facets</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="hero-section">
-      <div class="hero-overlay"></div>
-      <div class="container hero-content">
-        <div class="hero-text">
-          <p class="eyebrow">CS + Neuroscience • Music • Travel • Creativity</p>
-          <h1>A digital space that feels like me.</h1>
-          <p class="hero-intro">
-            I’m Hamsa — a Computer Science and Neuroscience student drawn to technology,
-            the human mind, music, color, and the experience of discovering new places.
-            I wanted this site to feel personal, expressive, and alive: less like a school
-            assignment and more like a reflection of who I am.
+    <section class="hero-shell">
+      <div class="hero-grid"></div>
+      <div class="hero-glow glow-one"></div>
+      <div class="hero-glow glow-two"></div>
+
+      <div class="hero-content container">
+        <p class="topline">DIGITAL CORNER / PERSONAL INDEX / IN MOTION</p>
+
+        <div class="hero-title-wrap">
+          <h1 class="hero-title" id="heroTitle">HAMSA</h1>
+          <p class="hero-subtitle">
+            a living archive of my different worlds
           </p>
-          <div class="hero-buttons">
-            <a href="passions.html" class="btn btn-primary">Explore My World</a>
-            <a href="#about" class="btn btn-outline">Read More</a>
-          </div>
         </div>
 
-        <div class="hero-card">
-          <img src="images/profile.jpg" alt="Portrait of Hamsa" class="hero-profile">
-          <div class="hero-card-text">
-            <h2>Currently inspired by</h2>
-            <p>live music, red tones, travel memories, brain science, and building meaningful things.</p>
-          </div>
+        <div class="status-row">
+          <span class="status-label">NOW TUNING TO:</span>
+          <span id="rotatingFacet" class="status-text">me@stage</span>
+        </div>
+
+        <div class="hero-intro-panel">
+          <p>
+            Hi, I’m Hamsa. I’m a Computer Science and Neuroscience student, but I’m also much more
+            than a major. I love music performances, travel, visual storytelling, vibrant spaces,
+            and ideas that sit between logic and feeling. I wanted this website to feel like a real
+            digital corner of my life — not just a static introduction, but a place that reflects my
+            different facets and the energy I bring into everything I do.
+          </p>
+
+          <p>
+            Some parts of me show up on stage, some in code, some in airport windows, some in art
+            spaces, and some in the way I think about the brain and human behavior. This site is built
+            around that idea: that identity is layered, and that the most interesting people are rarely
+            just one thing. I’m curious, expressive, ambitious, and always drawn to experiences that
+            feel meaningful and memorable.
+          </p>
+
+          <p>
+            The design of this homepage is meant to reflect that feeling. It is darker, sharper, more
+            interactive, and more alive — inspired by digital studios and immersive portfolio spaces.
+            On the next page, I break down those different sides of myself more clearly, from music and
+            performances to code projects, travel, art, and the intersection of computer science and
+            neuroscience.
+          </p>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="passions.html" class="btn btn-primary">Enter My Facets</a>
+          <a href="#contact" class="btn btn-outline">Contact</a>
         </div>
       </div>
     </section>
 
-    <section id="about" class="container about-section">
-      <div class="section-heading">
-        <p class="eyebrow">About Me</p>
-        <h2>Where science, storytelling, and curiosity meet</h2>
+    <section class="facet-preview container">
+      <div class="section-head">
+        <p class="section-label">FACET MAP</p>
+        <h2>me in different spaces</h2>
       </div>
 
-      <div class="about-grid">
-        <div class="about-text card">
-          <p>
-            I am a student who loves living at the intersection of logic and feeling.
-            Computer science gives me a way to build, solve problems, and think in systems.
-            Neuroscience gives me a way to understand people more deeply — how we think,
-            remember, feel, and experience the world. Together, they shape the way I see
-            both technology and human life.
-          </p>
-
-          <p>
-            Outside of academics, music and travel are two of the biggest parts of who I am.
-            Music gives shape to my memories. Certain songs can instantly bring back a time,
-            a place, or a version of myself. Travel does something similar. It makes life feel
-            bigger. I love city streets, beautiful architecture, waterfronts, cafés, concerts,
-            and moments that feel cinematic enough to remember forever.
-          </p>
-
-          <p>
-            This website is a collection of those interests. It’s a space where I can present
-            myself not only as a student, but as a person with a creative point of view.
-            I wanted the design to feel warm, modern, and colorful, with room for both personal
-            reflection and visual energy. More than anything, I wanted it to feel authentic.
-          </p>
-        </div>
-
-        <div class="about-side">
-          <div class="mini-panel">
-            <h3>My vibe</h3>
-            <p>thoughtful, ambitious, artistic, curious, and always making a playlist for everything.</p>
-          </div>
-          <div class="mini-panel">
-            <h3>What I love</h3>
-            <p>music, travel, cities, neuroscience, code, photography, and details that make life memorable.</p>
-          </div>
-          <div class="mini-panel">
-            <h3>Now playing</h3>
-            <p>add your favorite artist or song here.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container highlight-section">
-      <div class="section-heading">
-        <p class="eyebrow">Snapshots</p>
-        <h2>A few things that define me</h2>
-      </div>
-
-      <div class="highlights-grid">
-        <article class="highlight-card">
-          <img src="images/concert.jpg" alt="Concert or music moment">
-          <div class="highlight-copy">
-            <h3>Music</h3>
-            <p>Music is one of the strongest emotional anchors in my life. It shapes memory, mood, and atmosphere.</p>
-          </div>
+      <div class="facet-cards">
+        <article class="facet-card">
+          <span class="facet-tag">01</span>
+          <h3>me@stage</h3>
+          <p>Music, performances, expression, confidence, rhythm, and the emotional power of live moments.</p>
         </article>
 
-        <article class="highlight-card">
-          <img src="images/travel1.jpg" alt="Travel memory">
-          <div class="highlight-copy">
-            <h3>Travel</h3>
-            <p>I love places that feel visually unforgettable — city streets, waterfronts, architecture, and movement.</p>
-          </div>
+        <article class="facet-card">
+          <span class="facet-tag">02</span>
+          <h3>me@code</h3>
+          <p>Projects, systems, curiosity, technical creativity, and the satisfaction of building something meaningful.</p>
         </article>
 
-        <article class="highlight-card">
-          <img src="images/city.jpg" alt="City or aesthetic scene">
-          <div class="highlight-copy">
-            <h3>Curiosity</h3>
-            <p>Whether I’m learning neuroscience or building something in code, curiosity is the thread connecting it all.</p>
-          </div>
+        <article class="facet-card">
+          <span class="facet-tag">03</span>
+          <h3>me@nextplane</h3>
+          <p>Travel, movement, city energy, new perspectives, and the feeling of always having more to explore.</p>
+        </article>
+
+        <article class="facet-card">
+          <span class="facet-tag">04</span>
+          <h3>me@artstudio</h3>
+          <p>Color, visual taste, atmosphere, detail, and the side of me that sees beauty in experience and design.</p>
         </article>
       </div>
     </section>
 
-    <section class="container contact-section">
-      <div class="section-heading">
-        <p class="eyebrow">Contact</p>
-        <h2>Let’s connect</h2>
+    <section class="image-strip-section container">
+      <div class="section-head">
+        <p class="section-label">VISUAL SNAPSHOTS</p>
+        <h2>the aesthetic behind the identity</h2>
       </div>
-      <div class="contact-card">
+
+      <div class="image-strip">
+        <img src="images/stage.jpg" alt="Hamsa performing on stage">
+        <img src="images/travel1.jpg" alt="Travel moment">
+        <img src="images/code.jpg" alt="Workspace or coding setup">
+        <img src="images/art.jpg" alt="Art or creative space">
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section container">
+      <div class="section-head">
+        <p class="section-label">CONTACT</p>
+        <h2>find me here</h2>
+      </div>
+
+      <div class="contact-box">
         <p>
-          You can reach me by email or find me on social platforms.
+          This is my digital corner, but you can also reach me beyond it.
         </p>
         <div class="contact-links">
           <a href="mailto:hamsa.madhira@gmail.com">Email</a>
@@ -150,7 +141,9 @@
   </main>
 
   <footer class="site-footer">
-    <p>Made with color, curiosity, and personality.</p>
+    <p>HAMSA / on the stage / me@code / plane / me@artstudio</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
