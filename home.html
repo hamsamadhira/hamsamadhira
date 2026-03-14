@@ -3,40 +3,613 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hamsa | Digital Corner</title>
+  <title>Hamsa | Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --red: #ff2b54;
+      --red-dim: rgba(255, 43, 84, 0.18);
+      --red-line: rgba(255, 43, 84, 0.22);
+      --bg: #060608;
+      --bg2: #0a0a0d;
+      --text: #f0f0f4;
+      --muted: #9898a8;
+      --card-bg: rgba(255,255,255,0.03);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Ambient cursor glow ── */
+    #pageGlow {
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,43,84,0.13) 0%, rgba(255,43,84,0.05) 40%, transparent 70%);
+      filter: blur(32px);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      left: 50%; top: 50%;
+      z-index: 0;
+      transition: left 0.08s, top 0.08s;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(6,6,8,0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--red);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── About Hero ── */
+    .about-hero {
+      padding: 10rem 0 6rem;
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(255,43,84,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 0% 80%, rgba(255,43,84,0.05) 0%, transparent 50%);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* ── Left copy ── */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.4rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--red);
+    }
+
+    .about-heading {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+
+    .about-heading em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    .about-body p {
+      font-size: 1rem;
+      line-height: 1.88;
+      color: #b8b8c8;
+      margin-bottom: 1.1rem;
+      font-weight: 300;
+    }
+
+    .about-body p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── Tags row ── */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 2rem;
+    }
+
+    .tag {
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 0.32rem 0.85rem;
+      border-radius: 99px;
+      border: 1px solid var(--red-line);
+      color: #cc3355;
+      background: rgba(255,43,84,0.06);
+      text-transform: uppercase;
+    }
+
+    /* ── Right photo card ── */
+    .photo-card {
+      position: sticky;
+      top: 7rem;
+      border-radius: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--red-line);
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.03);
+    }
+
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.94) contrast(1.05);
+    }
+
+    .photo-caption {
+      padding: 1rem 1.2rem 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .caption-chip {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+
+    .caption-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red-line), transparent);
+      margin: 0 2.5rem;
+    }
+
+    /* ── Quick facts / stats strip ── */
+    .stats-strip {
+      padding: 4rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--red-line);
+      border: 1px solid var(--red-line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .stat-cell {
+      background: var(--bg2);
+      padding: 2.2rem 1.8rem;
+      transition: background 0.2s;
+    }
+
+    .stat-cell:hover {
+      background: rgba(255,43,84,0.05);
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-num span {
+      color: var(--red);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Focus areas ── */
+    .focus-section {
+      padding: 5rem 0 6rem;
+    }
+
+    .focus-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.8rem;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.9rem;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .see-more {
+      font-size: 0.82rem;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--red-line);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+
+    .see-more:hover {
+      border-color: var(--red);
+    }
+
+    .focus-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .focus-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .focus-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255,43,84,0.08), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .focus-card:hover {
+      border-color: var(--red-line);
+      transform: translateY(-3px);
+    }
+
+    .focus-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 0.55rem;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .footer-mark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-mark span { color: var(--red); }
+
+    /* ── Fade-in animation ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .fade-up:nth-child(1) { animation-delay: 0.1s; }
+    .fade-up:nth-child(2) { animation-delay: 0.22s; }
+    .fade-up:nth-child(3) { animation-delay: 0.34s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .photo-card { position: static; }
+      .photo-card img { aspect-ratio: 4/3; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .focus-cards { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 1.2rem; }
+      .about-hero { padding: 8rem 0 4rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .focus-cards { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
 </head>
-<body class="site-body">
-  <div class="page-glow" id="pageGlow"></div>
-<section id="about" class="intro-hero container">
-  <div class="about-layout">
-    <div class="about-copy">
-      <p class="section-label">MORE ABOUT</p>
-      <h1 class="intro-heading">Where I build, create, perform, travel, and collect.</h1>
+<body>
 
-      <p class="intro-copy">
-        Hi, I’m Hamsa. I’m a Computer Science and Neuroscience student who loves building things that feel both technically sharp and deeply human. 
-        I’m especially excited by projects where software does more than function — where it can adapt, reason thoughtfully, and support people in meaningful ways. That’s part of why I enjoy work in agentic AI systems, machine learning pipelines, and workflow automation.
-      </p>
+  <div id="pageGlow"></div>
 
-      <p class="intro-copy">
-        I’m drawn to projects that sit at the intersection of AI, systems thinking, and real-world impact, especially in health-tech and workflow automation. I’m interested in how intelligent systems can reduce friction, improve decision-making, and create better human experiences, especially when paired with an understanding of behavior, memory, and the brain.
-      </p>
+  <!-- Nav -->
+  <nav>
+    <a href="index.html" class="nav-logo">HAMSA<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Intro</a></li>
+      <li><a href="home.html" class="active">About</a></li>
+      <li><a href="interests.html">My World</a></li>
+      <li><a href="passions.html">Passions</a></li>
+    </ul>
+  </nav>
 
-      <p class="intro-copy">
-        Outside of code, I’m someone who feels deeply connected to music, travel, performance, and visual atmosphere. I notice color, sound, movement, architecture, and the small details that make a moment memorable. This site reflects all of those different sides of me — the builder, the performer, the observer, the collector, and the person constantly curious about both people and technology.
-      </p>
-    </div>
+  <!-- About Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-grid">
 
-    <div class="about-photo-card">
-      <img src="IMG_5061.JPG" alt="Description of image">        <p class="caption-label">CURRENTLY INTO</p>
-        <p class="caption-text">
-          agentic AI, ML pipelines, health-tech workflows, music, motion, and places that feel cinematic.
-        </p>
+        <!-- Left: copy -->
+        <div class="about-copy">
+          <p class="eyebrow fade-up">More about me</p>
+
+          <h1 class="about-heading fade-up">
+            Builder. Performer.<br>
+            <em>Perpetually curious.</em>
+          </h1>
+
+          <div class="about-body fade-up">
+            <p>
+              Hi, I'm <strong>Hamsa</strong> — a Computer Science &amp; Neuroscience student who loves
+              building things that feel both <strong>technically sharp and deeply human</strong>.
+              I'm especially excited by projects where software does more than function —
+              where it can adapt, reason thoughtfully, and support people in meaningful ways.
+            </p>
+            <p>
+              That's part of why I gravitate toward <strong>agentic AI systems</strong>, machine learning
+              pipelines, and workflow automation — particularly in health-tech, where the stakes
+              make the craft matter more.
+            </p>
+            <p>
+              Outside of code, I'm someone who feels deeply connected to <strong>music, travel,
+              performance, and visual atmosphere</strong>. I notice color, sound, movement,
+              architecture, and the small details that make a moment memorable. This site
+              reflects all of those different sides — the builder, the performer, the observer,
+              and the person constantly curious about both people and technology.
+            </p>
+          </div>
+
+          <div class="tag-row">
+            <span class="tag">Agentic AI</span>
+            <span class="tag">ML Pipelines</span>
+            <span class="tag">Health-tech</span>
+            <span class="tag">Neuroscience</span>
+            <span class="tag">Live Music</span>
+            <span class="tag">Travel</span>
+            <span class="tag">Systems Design</span>
+          </div>
+        </div>
+
+        <!-- Right: photo card -->
+        <div class="photo-card">
+          <img src="IMG_5061.JPG" alt="Hamsa">
+          <div class="photo-caption">
+            <p class="caption-chip">Currently into</p>
+            <p class="caption-body">
+              Agentic AI, ML pipelines, health-tech workflows,
+              music, motion, and places that feel cinematic.
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Stats strip -->
+  <section class="stats-strip">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-num">2<span>×</span></div>
+          <div class="stat-label">Fields of Study</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Live shows attended</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">10<span>+</span></div>
+          <div class="stat-label">Countries explored</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">01</div>
+          <div class="stat-label">Digital corner</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Focus areas -->
+  <section class="focus-section">
+    <div class="container">
+      <div class="focus-header">
+        <h2 class="section-title">Where I spend my time</h2>
+        <a href="interests.html" class="see-more">My World →</a>
+      </div>
+
+      <div class="focus-cards">
+        <div class="focus-card">
+          <div class="card-icon">🤖</div>
+          <div class="card-title">Agentic AI & ML</div>
+          <p class="card-desc">Building systems that can reason, adapt, and act — pipelines that reduce friction and improve decision-making in real workflows.</p>
+        </div>
+        <div class="focus-card">
+          <div class="card-icon">🧠</div>
+          <div class="card-title">Neuroscience</div>
+          <p class="card-desc">Exploring how humans think, remember, and behave — pairing that understanding with computational systems for real human impact.</p>
+        </div>
+        <div class="focus-card">
+          <div class="card-icon">🏥</div>
+          <div class="card-title">Health-tech</div>
+          <p class="card-desc">Interested in how intelligent systems can improve outcomes when they're built with behavior, memory, and empathy in mind.</p>
+        </div>
+        <div class="focus-card">
+          <div class="card-icon">🎵</div>
+          <div class="card-title">Music & Performance</div>
+          <p class="card-desc">Live music turns emotion into shared experience. I'm drawn to the way a room can unify around a single rhythm.</p>
+        </div>
+        <div class="focus-card">
+          <div class="card-icon">✈️</div>
+          <div class="card-title">Travel & Place</div>
+          <p class="card-desc">New cities shift perspective. I love finding spots that feel cinematic — the streets, light, and pace that make a place unforgettable.</p>
+        </div>
+        <div class="focus-card">
+          <div class="card-icon">📐</div>
+          <div class="card-title">Design & Craft</div>
+          <p class="card-desc">I care about the details that make interfaces feel intentional — color, motion, typography, and the moments that make someone pause.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-note">Music. Memory. Motion. Meaning.</span>
+    <span class="footer-mark">HAMSA<span>.</span></span>
+  </footer>
+
+  <script>
+    // Cursor glow
+    const glow = document.getElementById('pageGlow');
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+    });
+  </script>
+</body>
+</html>
