@@ -3,298 +3,411 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hamsa | Home</title>
+  <title>Perform | Hamsa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@1,500;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --red: #ff2b54;
-      --red-dim: rgba(255, 43, 84, 0.18);
-      --red-line: rgba(255, 43, 84, 0.22);
-      --bg: #060608;
-      --bg2: #0a0a0d;
-      --text: #f0f0f4;
-      --muted: #9898a8;
-      --card-bg: rgba(255,255,255,0.03);
+      --red:      #ff2b54;
+      --red-soft: rgba(255,43,84,0.12);
+      --red-line: rgba(255,43,84,0.22);
+      --bg:       #060608;
+      --bg2:      #0d0d10;
+      --bg3:      #111116;
+      --text:     #f0f0f4;
+      --muted:    #8888a0;
+      --card-bg:  rgba(255,255,255,0.03);
+      --card-bdr: rgba(255,255,255,0.07);
+      --radius:   16px;
+      --nav-h:    64px;
     }
 
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+      color: #f0f0f4;
       min-height: 100vh;
       overflow-x: hidden;
+      background:
+        radial-gradient(ellipse at 50% 0%,   rgba(255,43,84,.11) 0%, transparent 50%),
+        radial-gradient(ellipse at 0%  70%,  rgba(255,43,84,.06) 0%, transparent 40%),
+        radial-gradient(ellipse at 100% 90%, rgba(255,43,84,.05) 0%, transparent 40%),
+        #050507;
     }
 
-    #pageGlow {
-      position: fixed;
-      width: 380px;
-      height: 380px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,43,84,0.13) 0%, rgba(255,43,84,0.05) 40%, transparent 70%);
-      filter: blur(32px);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      left: 50%; top: 50%;
-      z-index: 0;
-      transition: left 0.08s, top 0.08s;
+
+    .perform-hero {
+      padding: calc(var(--nav-h) + 5rem) 0 3.5rem;
+      position: relative; z-index: 1;
+      text-align: center;
     }
 
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 3rem;
-      background: rgba(6,6,8,0.72);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+    .perform-kicker {
+      display: inline-flex; align-items: center; gap: .65rem;
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .28em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 1.5rem;
+    }
+    .perform-kicker::before,
+    .perform-kicker::after {
+      content: '';
+      display: block;
+      width: 28px; height: 1px;
+      background: var(--red);
     }
 
-    .nav-logo {
+    .perform-title {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: 0.04em;
+      font-size: clamp(3.2rem, 9vw, 7rem);
+      line-height: .92;
+      letter-spacing: -.035em;
       color: var(--text);
-      text-decoration: none;
+      margin-bottom: 0;
     }
-
-    .nav-logo span { color: var(--red); }
-
-    .nav-links {
-      display: flex;
-      gap: 2.2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.88rem;
+    .perform-title em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
       font-weight: 500;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-      position: relative;
+      color: var(--red);
     }
 
-    .nav-links a::after {
+    .title-rule {
+      width: 48px; height: 2px;
+      background: var(--red);
+      margin: 2rem auto 0;
+      border-radius: 2px;
+      box-shadow: 0 0 12px rgba(255,43,84,.5);
+    }
+
+    
+    .gallery-section {
+      position: relative; z-index: 1;
+      padding: 4rem 0 0;
+    }
+
+    .gallery-featured {
+      width: 100%;
+      aspect-ratio: 21/9;
+      background: #0a0a0e;
+      border: 1px solid var(--red-line);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 1rem;
+      transition: border-color .3s;
+    }
+    .gallery-featured:hover { border-color: var(--red); }
+    .gallery-featured img {
+      width: 100%; height: 100%;
+      object-fit: cover; opacity: .88;
+      transition: opacity .4s, transform .6s ease;
+    }
+    .gallery-featured:hover img { opacity: 1; transform: scale(1.01); }
+
+    .gallery-featured::after {
       content: '';
       position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 1px;
-      background: var(--red);
-      transition: width 0.25s ease;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--red) 0%, rgba(255,43,84,.3) 50%, transparent 100%);
     }
 
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--text); }
-
-    .nav-links a:hover::after,
-    .nav-links a.active::after { width: 100%; }
-
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 2.5rem;
-      position: relative;
-      z-index: 1;
+    .gallery-ph {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .8rem;
+      background: radial-gradient(ellipse at center, rgba(255,43,84,.08) 0%, transparent 65%);
+    }
+    .gallery-ph .ph-icon { font-size: 2.8rem; opacity: .25; }
+    .gallery-ph .ph-text {
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); opacity: .4;
     }
 
-    .about-hero {
-      padding: 10rem 0 6rem;
-      background:
-        radial-gradient(ellipse at 80% 0%, rgba(255,43,84,0.08) 0%, transparent 55%),
-        radial-gradient(ellipse at 0% 80%, rgba(255,43,84,0.05) 0%, transparent 50%);
-    }
-
-    .about-grid {
+    /* thumbnail rows */
+    .gallery-strip {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 4rem;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .gallery-strip-2 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-thumb {
+      aspect-ratio: 4/3;
+      background: #0a0a0e;
+      border: 1px solid rgba(255,43,84,.15);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .gallery-thumb:hover {
+      border-color: var(--red);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.5), 0 0 0 1px rgba(255,43,84,.15);
+    }
+    .gallery-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover; opacity: .8;
+      transition: opacity .3s;
+    }
+    .gallery-thumb:hover img { opacity: 1; }
+
+    .gallery-thumb::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(255,43,84,.07);
+      opacity: 0; transition: opacity .25s; z-index: 1;
+    }
+    .gallery-thumb:hover::before { opacity: 1; }
+
+    .thumb-ph {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse at center, rgba(255,43,84,.07) 0%, transparent 70%);
+      font-size: 1.4rem; opacity: .3;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red-line), transparent);
+      margin: 5rem 0;
+    }
+
+    .description-section {
+      position: relative; z-index: 1;
+      padding-bottom: 5rem;
+    }
+
+    .desc-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
       align-items: start;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.73rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 1.4rem;
-    }
-
-    .eyebrow::before {
-      content: '';
-      display: block;
-      width: 24px; height: 1px;
-      background: var(--red);
-    }
-
-    .about-heading {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 2rem;
-    }
-
-    .about-heading em {
-      font-style: italic;
-      font-weight: 700;
-      color: var(--red);
-    }
-
-    .about-body p {
-      font-size: 1rem;
-      line-height: 1.88;
-      color: #b8b8c8;
-      margin-bottom: 1.1rem;
-      font-weight: 300;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-top: 2rem;
-    }
-
-    .tag {
-      font-size: 0.76rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      padding: 0.32rem 0.85rem;
-      border-radius: 99px;
-      border: 1px solid var(--red-line);
-      color: #cc3355;
-      background: rgba(255,43,84,0.06);
-      text-transform: uppercase;
-    }
-
-    .photo-card {
+    /* sticky left label */
+    .desc-label-col {
       position: sticky;
-      top: 7rem;
-      border-radius: 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--red-line);
-      overflow: hidden;
+      top: calc(var(--nav-h) + 2rem);
     }
 
-    .photo-card img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
+    .desc-kicker {
+      font-size: .7rem; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .desc-kicker::before { content:''; display:block; width:20px; height:1px; background:var(--red); }
+
+    .desc-side-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 2rem;
+      line-height: 1.05; letter-spacing: -.02em;
+      color: var(--text); margin-bottom: 1.8rem;
     }
 
-    .photo-caption {
-      padding: 1rem 1.2rem 1.2rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
+    .desc-bar {
+      width: 2px; height: 80px;
+      background: linear-gradient(180deg, var(--red), transparent);
+      border-radius: 2px; margin-bottom: 1.8rem;
+      box-shadow: 0 0 12px rgba(255,43,84,.3);
     }
 
-    .caption-chip {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+    .desc-side-note {
+      font-size: .82rem; color: #b0b0c4;
+      line-height: 1.7; font-weight: 300;
+    }
+
+    .desc-block {
+      margin-bottom: 2.4rem;
+      padding-bottom: 2.4rem;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .desc-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .desc-block-label {
+      font-size: .68rem; font-weight: 500;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--red); margin-bottom: .9rem; opacity: .85;
+    }
+
+    .desc-block p {
+      font-size: 1.05rem; font-weight: 300;
+      color: #e8e8f0; line-height: 1.92;
+    }
+    .desc-block p + p { margin-top: 1rem; }
+    .desc-block p strong { color: var(--text); font-weight: 500; }
+    .desc-block p em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; color: rgba(255,43,84,.85);
+    }
+
+    .desc-quote {
+      border-left: 2px solid var(--red);
+      padding: 1.4rem 1.8rem;
+      background: rgba(255,43,84,.04);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 3rem 0;
+    }
+    .desc-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      color: #f0f0f4; line-height: 1.5; font-weight: 500;
+    }
+    .desc-quote cite {
+      display: block; margin-top: .7rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .74rem; font-style: normal;
+      letter-spacing: .12em; text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 0.4rem;
     }
 
-    .caption-body {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.65;
+    
+    @media (max-width: 900px) {
+      .gallery-strip    { grid-template-columns: repeat(3, 1fr); }
+      .gallery-strip-2  { grid-template-columns: repeat(3, 1fr); }
+      .desc-layout      { grid-template-columns: 1fr; gap: 2.5rem; }
+      .desc-label-col   { position: static; }
+      .desc-bar         { display: none; }
+      .gallery-featured { aspect-ratio: 16/7; }
     }
+
+    @media (max-width: 600px) {
+      .gallery-featured  { aspect-ratio: 4/3; border-radius: 14px; }
+      .gallery-strip     { grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+      .gallery-strip-2   { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+      .perform-title     { font-size: clamp(2.8rem, 12vw, 5rem); }
+    }
+
   </style>
 </head>
-
 <body>
+  <div id="pageGlow"></div>
 
-<div id="pageGlow"></div>
+  <header class="perform-hero">
+    <div class="container">
+      <p class="perform-kicker fade-up">Hamsa Madhira</p>
+      <h1 class="perform-title fade-up">
+        On <em>stage.</em><br>In the moment.
+      </h1>
+      <div class="title-rule"></div>
+    </div>
+  </header>
 
-<nav>
-  <a href="index.html" class="nav-logo">HAMSA<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Intro</a></li>
-    <li><a href="home.html" class="active">About</a></li>
-    <li><a href="passions.html">Performances</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
+  <section class="gallery-section">
+    <div class="container">
 
-<section class="about-hero">
-<div class="container">
-<div class="about-grid">
+      
+      <div class="gallery-featured">
+        <div class="gallery-ph">
+          <span class="ph-icon">📸</span>
+          <span class="ph-text">Add your featured performance photo here</span>
+        </div>
+      </div>
 
-<div class="about-copy">
+ 
+      <div class="gallery-strip">
+        <div class="gallery-thumb"><div class="thumb-ph">🎤</div></div>
+        <div class="gallery-thumb"><div class="thumb-ph">🎶</div></div>
+        <div class="gallery-thumb"><div class="thumb-ph">🎵</div></div>
+        <div class="gallery-thumb"><div class="thumb-ph">✨</div></div>
+        <div class="gallery-thumb"><div class="thumb-ph">🎙️</div></div>
+      </div>
+      <div class="gallery-strip-2">
+        <div class="gallery-thumb"><div class="thumb-ph">🎸</div></div>
+        <div class="gallery-thumb"><div class="thumb-ph">🎤</div></div>
+        <div class="gallery-thumb"><div class="thumb-ph">🌟</div></div>
+        <div class="gallery-thumb"><div class="thumb-ph">🎼</div></div>
+      </div>
 
-<p class="eyebrow">The Performer</p>
+    </div>
+  </section>
 
-<h1 class="about-heading">
-Music. Rhythm. Presence.<br>
-<em>Performance that connects.</em>
-</h1>
+  <section class="description-section">
+    <div class="container">
+      <div class="section-divider"></div>
 
-<div class="about-body">
-<p>
-Hi, I'm <strong>Hamsa</strong> — a performer passionate about bringing music and rhythm to life on stage. Performance, for me, is about creating moments where sound, expression, and energy come together to connect with an audience.
-</p>
+      <div class="desc-layout">
 
-<p>
-I’m drawn to the experience of live performance — the shared atmosphere between performer and audience where every note, movement, and moment carries meaning. Each performance is an opportunity to tell a story through sound and presence.
-</p>
+        <div class="desc-label-col">
+          <p class="desc-kicker">The performer</p>
+          <h2 class="desc-side-title">Who I am<br>on stage.</h2>
+          <div class="desc-bar"></div>
+          <p class="desc-side-note">
+            Your story as a performer —<br>
+            in your own words.
+          </p>
+        </div>
 
-<p>
-This site is a space dedicated to my work as a performer. Here you’ll find performances, creative projects, and the music that continues to shape my artistic voice.
-</p>
-</div>
+        <div class="desc-content-col">
 
-<div class="tag-row">
-<span class="tag">Live Performance</span>
-<span class="tag">Music</span>
-<span class="tag">Stage</span>
-<span class="tag">Rhythm</span>
-<span class="tag">Storytelling</span>
-<span class="tag">Collaboration</span>
-<span class="tag">Creative Expression</span>
-</div>
+          <div class="desc-block">
+            <p class="desc-block-label">The stage</p>
+            <p>
+              Write about yourself as a performer here. What drew you to the stage?
+              What does it feel like to stand in front of an audience?
+              This is your space to introduce yourself — the <strong>performer</strong>, not just the person.
+            </p>
+            <p>
+              Talk about what performance means to you. How long have you been doing it?
+              What kinds of shows, stages, or events have you been part of?
+              Make this feel like <em>you</em>.
+            </p>
+          </div>
 
-</div>
+          <div class="desc-quote">
+            <p>"Replace this with something you actually feel about being on stage — a truth, a feeling, a line that sounds like you."</p>
+            <cite>— Hamsa</cite>
+          </div>
 
-<div class="photo-card">
-<img src="IMG_5061.JPG" alt="Hamsa performing">
-<div class="photo-caption">
-<p class="caption-chip">On Stage</p>
-<p class="caption-body">
-Music, rhythm, and the energy of live performance — moments where the stage becomes a space for connection, expression, and storytelling.
-</p>
-</div>
-</div>
+          <div class="desc-block">
+            <p class="desc-block-label">My sound</p>
+            <p>
+              What kind of music do you perform? What's your style?
+              Write about the genres, artists, or moments that shaped
+              how you perform. This is where your <strong>musical identity</strong> lives.
+            </p>
+          </div>
 
-</div>
-</div>
-</section>
+          <div class="desc-block">
+            <p class="desc-block-label">What it gives me</p>
+            <p>
+              What does performing give you that nothing else does?
+              Confidence, connection, release, joy? Write about the specific feeling
+              of being on stage and why it matters to you. Be honest —
+              this is the part that makes someone feel like they <strong>know you</strong>.
+            </p>
+          </div>
 
-<script>
-const glow = document.getElementById('pageGlow');
-document.addEventListener('mousemove', e => {
-glow.style.left = e.clientX + 'px';
-glow.style.top  = e.clientY + 'px';
-});
-</script>
+          <div class="desc-block">
+            <p class="desc-block-label">Highlights</p>
+            <p>
+              Name specific performances, shows, competitions, or stages
+              you've been part of. What was the most memorable?
+              What happened in the performance you'll never forget?
+              <strong>Specific details make this real.</strong>
+            </p>
+          </div>
 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="shared.js"></script>
 </body>
 </html>
