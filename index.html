@@ -9,87 +9,218 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css" />
   <style>
-    body.landing-body { overflow: hidden; }
+
+    body {
+      overflow: hidden !important;
+      background: #050505 !important;
+      min-height: 100vh;
+    }
+
     .landing-shell {
-      position: relative; width: 100vw; height: 100vh;
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
-      background: radial-gradient(ellipse at 60% 40%, rgba(255,43,84,.09) 0%, transparent 55%),
-                  linear-gradient(180deg, #050505 0%, #09090b 100%);
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at 60% 40%, rgba(255,43,84,.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(255,43,84,.06) 0%, transparent 40%),
+        linear-gradient(180deg, #050505 0%, #09090b 100%);
     }
+
+    /* ── Grid lines ── */
     .hero-grid {
-      position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(255,43,84,.06) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,43,84,.06) 1px, transparent 1px);
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,43,84,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,43,84,.07) 1px, transparent 1px);
       background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-    }
-    .hero-noise {
-      position: absolute; inset: 0; opacity: .025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 72%);
+      mask-image: radial-gradient(ellipse at center, black 25%, transparent 72%);
       pointer-events: none;
     }
+
+    /* ── Film grain ── */
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      opacity: .03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* ── Cursor glow ── */
     #heroGlow {
-      position: fixed; width: 420px; height: 420px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,43,84,.16) 0%, rgba(255,43,84,.06) 38%, transparent 70%);
-      filter: blur(32px); pointer-events: none; transform: translate(-50%,-50%);
-      left: 50%; top: 50%; z-index: 0; transition: left .06s, top .06s;
+      position: fixed;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(255,43,84,.18) 0%,
+        rgba(255,43,84,.07) 35%,
+        transparent 70%);
+      filter: blur(36px);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      z-index: 1;
+      transition: left .07s ease, top .07s ease;
     }
+
+    /* ── Content ── */
     .landing-content {
-      position: relative; z-index: 1; text-align: center;
-      display: flex; flex-direction: column; align-items: center;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1.5rem;
     }
+
+    /* "Hi, I am" */
     .landing-topline {
-      font-size: .78rem; font-weight: 500; letter-spacing: .3em;
-      text-transform: uppercase; color: var(--red); margin-bottom: 1.4rem;
-      opacity: 0; animation: fadeUp .6s .1s ease forwards;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.6rem;
+      opacity: 0;
+      animation: landingFade .6s .15s ease forwards;
     }
+
+    /* Big name */
     .landing-title {
-      font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: clamp(4.5rem, 16vw, 12rem); line-height: .9;
-      letter-spacing: -.03em; color: var(--text); position: relative;
-      user-select: none; opacity: 0; animation: fadeUp .65s .22s ease forwards;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(5rem, 18vw, 13rem);
+      line-height: .88;
+      letter-spacing: -.035em;
+      color: var(--text);
+      position: relative;
+      user-select: none;
+      opacity: 0;
+      animation: landingFade .7s .28s ease forwards;
     }
-    .landing-title span:first-child { display: block; }
-    .landing-title span:last-child {
-      display: block; position: absolute; inset: 0; color: transparent;
-      -webkit-text-stroke: 1px rgba(255,43,84,.25);
-      transform: translate(4px, 4px); pointer-events: none;
+
+    /* Solid text layer */
+    .landing-title .t-solid {
+      display: block;
+      position: relative;
+      z-index: 1;
     }
+
+    /* Offset ghost layer */
+    .landing-title .t-ghost {
+      display: block;
+      position: absolute;
+      inset: 0;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255,43,84,.2);
+      transform: translate(5px, 5px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Subtitle */
     .landing-subtitle {
-      font-size: 1rem; font-weight: 300; color: var(--muted); letter-spacing: .05em;
-      margin-top: 1.8rem; opacity: 0; animation: fadeUp .65s .34s ease forwards;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: .06em;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: landingFade .65s .42s ease forwards;
     }
+
+    /* CTA button */
     .enter-button {
-      display: inline-flex; align-items: center; gap: .55rem;
-      margin-top: 2.6rem; padding: .85rem 2rem;
-      background: var(--red); color: #fff;
-      font-family: 'Syne', sans-serif; font-weight: 700;
-      font-size: .88rem; letter-spacing: .1em; text-transform: uppercase;
-      border-radius: 99px; opacity: 0; animation: fadeUp .65s .46s ease forwards;
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      margin-top: 2.8rem;
+      padding: .9rem 2.2rem;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .86rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 99px;
+      opacity: 0;
+      animation: landingFade .65s .56s ease forwards;
       transition: background .2s, transform .2s, box-shadow .2s;
-      box-shadow: 0 0 28px rgba(255,43,84,.35);
+      box-shadow: 0 0 32px rgba(255,43,84,.4);
     }
-    .enter-button:hover { background: #ff1a44; transform: translateY(-2px); box-shadow: 0 0 40px rgba(255,43,84,.5); }
-    .enter-button::after { content: '→'; }
-    #main-nav { background: transparent; border-bottom: none; }
-    #main-footer { display: none; }
+    .enter-button:hover {
+      background: #ff1a44;
+      transform: translateY(-3px);
+      box-shadow: 0 0 48px rgba(255,43,84,.55);
+    }
+    .enter-button .arrow {
+      font-size: 1rem;
+      transition: transform .2s;
+    }
+    .enter-button:hover .arrow { transform: translateX(3px); }
+
+    /* ── Animation ── */
+    @keyframes landingFade {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Hide injected nav & footer on this splash page ── */
+    #main-nav,
+    #main-footer { display: none !important; }
+
   </style>
 </head>
-<body class="landing-body">
-  <main class="landing-shell">
+<body>
+
+  <div class="landing-shell">
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
     <div id="heroGlow"></div>
+
     <section class="landing-content">
       <p class="landing-topline">Hi, I am</p>
+
       <h1 class="landing-title" id="heroTitle">
-        <span>HAMSA</span>
-        <span>HAMSA</span>
+        <span class="t-solid">HAMSA</span>
+        <span class="t-ghost">HAMSA</span>
       </h1>
+
       <p class="landing-subtitle">Welcome to my digital corner.</p>
-      <a href="home.html" class="enter-button">Learn more about me</a>
+
+      <a href="home.html" class="enter-button">
+        Learn more about me
+        <span class="arrow">→</span>
+      </a>
     </section>
-  </main>
+  </div>
+
   <script src="shared.js"></script>
+  <script>
+    // Cursor glow follows mouse
+    const glow = document.getElementById('heroGlow');
+    const title = document.getElementById('heroTitle');
+
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+
+      // Subtle parallax on title
+      const dx = (window.innerWidth  / 2 - e.clientX) / 50;
+      const dy = (window.innerHeight / 2 - e.clientY) / 50;
+      title.style.transform = `translate(${-dx}px, ${-dy}px)`;
+    });
+  </script>
 </body>
 </html>
