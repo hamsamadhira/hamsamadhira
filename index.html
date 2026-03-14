@@ -4,15 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HAMSA</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="shared.css" />
+
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --red: #ff2b54;
+      --text: #f0f0f4;
+      --muted: #9898a8;
+      --bg: #050505;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
 
     body {
-      overflow: hidden !important;
-      background: #050505 !important;
+      font-family: 'DM Sans', sans-serif;
+      background: #050505;
+      color: var(--text);
       min-height: 100vh;
     }
 
@@ -26,9 +46,9 @@
         radial-gradient(ellipse at 60% 40%, rgba(255,43,84,.12) 0%, transparent 55%),
         radial-gradient(ellipse at 20% 80%, rgba(255,43,84,.06) 0%, transparent 40%),
         linear-gradient(180deg, #050505 0%, #09090b 100%);
+      overflow: hidden;
     }
 
-    /* ── Grid lines ── */
     .hero-grid {
       position: absolute;
       inset: 0;
@@ -41,7 +61,6 @@
       pointer-events: none;
     }
 
-    /* ── Film grain ── */
     .hero-noise {
       position: absolute;
       inset: 0;
@@ -50,16 +69,17 @@
       pointer-events: none;
     }
 
-    /* ── Cursor glow ── */
     #heroGlow {
       position: fixed;
       width: 480px;
       height: 480px;
       border-radius: 50%;
-      background: radial-gradient(circle,
+      background: radial-gradient(
+        circle,
         rgba(255,43,84,.18) 0%,
         rgba(255,43,84,.07) 35%,
-        transparent 70%);
+        transparent 70%
+      );
       filter: blur(36px);
       pointer-events: none;
       transform: translate(-50%, -50%);
@@ -69,7 +89,6 @@
       transition: left .07s ease, top .07s ease;
     }
 
-    /* ── Content ── */
     .landing-content {
       position: relative;
       z-index: 2;
@@ -78,11 +97,10 @@
       flex-direction: column;
       align-items: center;
       padding: 0 1.5rem;
+      max-width: 1000px;
     }
 
-    /* "Hi, I am" */
     .landing-topline {
-      font-family: 'DM Sans', sans-serif;
       font-size: .78rem;
       font-weight: 500;
       letter-spacing: .32em;
@@ -93,28 +111,26 @@
       animation: landingFade .6s .15s ease forwards;
     }
 
-    /* Big name */
     .landing-title {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: clamp(5rem, 18vw, 13rem);
-      line-height: .88;
+      font-size: clamp(4rem, 16vw, 11rem);
+      line-height: .9;
       letter-spacing: -.035em;
       color: var(--text);
       position: relative;
       user-select: none;
       opacity: 0;
       animation: landingFade .7s .28s ease forwards;
+      will-change: transform;
     }
 
-    /* Solid text layer */
     .landing-title .t-solid {
       display: block;
       position: relative;
       z-index: 1;
     }
 
-    /* Offset ghost layer */
     .landing-title .t-ghost {
       display: block;
       position: absolute;
@@ -126,9 +142,7 @@
       z-index: 0;
     }
 
-    /* Subtitle */
     .landing-subtitle {
-      font-family: 'DM Sans', sans-serif;
       font-size: 1rem;
       font-weight: 300;
       color: var(--muted);
@@ -138,7 +152,6 @@
       animation: landingFade .65s .42s ease forwards;
     }
 
-    /* CTA button */
     .enter-button {
       display: inline-flex;
       align-items: center;
@@ -153,37 +166,54 @@
       letter-spacing: .12em;
       text-transform: uppercase;
       text-decoration: none;
-      border-radius: 99px;
+      border-radius: 999px;
       opacity: 0;
       animation: landingFade .65s .56s ease forwards;
       transition: background .2s, transform .2s, box-shadow .2s;
       box-shadow: 0 0 32px rgba(255,43,84,.4);
     }
+
     .enter-button:hover {
       background: #ff1a44;
       transform: translateY(-3px);
       box-shadow: 0 0 48px rgba(255,43,84,.55);
     }
+
     .enter-button .arrow {
       font-size: 1rem;
       transition: transform .2s;
     }
-    .enter-button:hover .arrow { transform: translateX(3px); }
 
-    /* ── Animation ── */
-    @keyframes landingFade {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .enter-button:hover .arrow {
+      transform: translateX(3px);
     }
 
-    /* ── Hide injected nav & footer on this splash page ── */
-    #main-nav,
-    #main-footer { display: none !important; }
+    @keyframes landingFade {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
+    @media (max-width: 640px) {
+      .landing-subtitle {
+        font-size: 0.92rem;
+        margin-top: 1.4rem;
+      }
+
+      .enter-button {
+        margin-top: 2rem;
+        padding: 0.85rem 1.6rem;
+        font-size: 0.78rem;
+      }
+    }
   </style>
 </head>
 <body>
-
   <div class="landing-shell">
     <div class="hero-grid"></div>
     <div class="hero-noise"></div>
@@ -206,18 +236,15 @@
     </section>
   </div>
 
-  <script src="shared.js"></script>
   <script>
-    // Cursor glow follows mouse
     const glow = document.getElementById('heroGlow');
     const title = document.getElementById('heroTitle');
 
-    document.addEventListener('mousemove', e => {
+    document.addEventListener('mousemove', (e) => {
       glow.style.left = e.clientX + 'px';
-      glow.style.top  = e.clientY + 'px';
+      glow.style.top = e.clientY + 'px';
 
-      // Subtle parallax on title
-      const dx = (window.innerWidth  / 2 - e.clientX) / 50;
+      const dx = (window.innerWidth / 2 - e.clientX) / 50;
       const dy = (window.innerHeight / 2 - e.clientY) / 50;
       title.style.transform = `translate(${-dx}px, ${-dy}px)`;
     });
