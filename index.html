@@ -3,146 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamsa Madhira</title>
+  <title>HAMSA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header class="site-header">
-    <nav class="navbar">
-      <a class="brand" href="index.html">HAMSA</a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="passions.html">Facets</a></li>
-      </ul>
-    </nav>
-  </header>
+<body class="landing-body">
+  <main class="landing-shell">
+    <div class="hero-grid"></div>
+    <div class="hero-noise"></div>
+    <div class="hero-glow" id="heroGlow"></div>
 
-  <main>
-    <section class="hero-shell">
-      <div class="hero-grid"></div>
-      <div class="hero-glow glow-one"></div>
-      <div class="hero-glow glow-two"></div>
+    <section class="landing-content">
+      <p class="landing-topline">DIGITAL CORNER / PERSONAL INDEX / IN MOTION</p>
 
-      <div class="hero-content container">
-        <p class="topline">DIGITAL CORNER / PERSONAL INDEX / IN MOTION</p>
+      <h1 class="landing-title" id="heroTitle">
+        <span>HAMSA</span>
+        <span>HAMSA</span>
+      </h1>
 
-        <div class="hero-title-wrap">
-          <h1 class="hero-title" id="heroTitle">HAMSA</h1>
-          <p class="hero-subtitle">
-            a living archive of my different worlds
-          </p>
-        </div>
+      <p class="landing-subtitle">
+        music, code, memory, motion
+      </p>
 
-        <div class="status-row">
-          <span class="status-label">NOW TUNING TO:</span>
-          <span id="rotatingFacet" class="status-text">me@stage</span>
-        </div>
-
-        <div class="hero-intro-panel">
-          <p>
-            Hi, I’m Hamsa. I’m a Computer Science and Neuroscience student, but I’m also much more
-            than a major. I love music performances, travel, visual storytelling, vibrant spaces,
-            and ideas that sit between logic and feeling. I wanted this website to feel like a real
-            digital corner of my life — not just a static introduction, but a place that reflects my
-            different facets and the energy I bring into everything I do.
-          </p>
-
-          <p>
-            Some parts of me show up on stage, some in code, some in airport windows, some in art
-            spaces, and some in the way I think about the brain and human behavior. This site is built
-            around that idea: that identity is layered, and that the most interesting people are rarely
-            just one thing. I’m curious, expressive, ambitious, and always drawn to experiences that
-            feel meaningful and memorable.
-          </p>
-
-          <p>
-            The design of this homepage is meant to reflect that feeling. It is darker, sharper, more
-            interactive, and more alive — inspired by digital studios and immersive portfolio spaces.
-            On the next page, I break down those different sides of myself more clearly, from music and
-            performances to code projects, travel, art, and the intersection of computer science and
-            neuroscience.
-          </p>
-        </div>
-
-        <div class="hero-buttons">
-          <a href="passions.html" class="btn btn-primary">Enter My Facets</a>
-          <a href="#contact" class="btn btn-outline">Contact</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="facet-preview container">
-      <div class="section-head">
-        <p class="section-label">FACET MAP</p>
-        <h2>me in different spaces</h2>
-      </div>
-
-      <div class="facet-cards">
-        <article class="facet-card">
-          <span class="facet-tag">01</span>
-          <h3>me@stage</h3>
-          <p>Music, performances, expression, confidence, rhythm, and the emotional power of live moments.</p>
-        </article>
-
-        <article class="facet-card">
-          <span class="facet-tag">02</span>
-          <h3>me@code</h3>
-          <p>Projects, systems, curiosity, technical creativity, and the satisfaction of building something meaningful.</p>
-        </article>
-
-        <article class="facet-card">
-          <span class="facet-tag">03</span>
-          <h3>me@nextplane</h3>
-          <p>Travel, movement, city energy, new perspectives, and the feeling of always having more to explore.</p>
-        </article>
-
-        <article class="facet-card">
-          <span class="facet-tag">04</span>
-          <h3>me@artstudio</h3>
-          <p>Color, visual taste, atmosphere, detail, and the side of me that sees beauty in experience and design.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="image-strip-section container">
-      <div class="section-head">
-        <p class="section-label">VISUAL SNAPSHOTS</p>
-        <h2>the aesthetic behind the identity</h2>
-      </div>
-
-      <div class="image-strip">
-        <img src="images/stage.jpg" alt="Hamsa performing on stage">
-        <img src="images/travel1.jpg" alt="Travel moment">
-        <img src="images/code.jpg" alt="Workspace or coding setup">
-        <img src="images/art.jpg" alt="Art or creative space">
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section container">
-      <div class="section-head">
-        <p class="section-label">CONTACT</p>
-        <h2>find me here</h2>
-      </div>
-
-      <div class="contact-box">
-        <p>
-          This is my digital corner, but you can also reach me beyond it.
-        </p>
-        <div class="contact-links">
-          <a href="mailto:hamsa.madhira@gmail.com">Email</a>
-          <a href="https://github.com/hamsamadhira" target="_blank">GitHub</a>
-          <a href="https://www.linkedin.com/in/hamsa-madhira/" target="_blank">LinkedIn</a>
-        </div>
-      </div>
+      <a href="home.html" class="enter-button">Enter</a>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <p>HAMSA / on the stage / me@code / plane / me@artstudio</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
