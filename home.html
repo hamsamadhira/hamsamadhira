@@ -1,132 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamsa | Digital Corner</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="site-body">
-  <header class="site-header">
-    <nav class="navbar container">
-      <a class="brand" href="index.html">HAMSA</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#facets">Where I...</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="intro-hero container">
+<section id="about" class="intro-hero container">
+  <div class="about-layout">
+    <div class="about-copy">
       <p class="section-label">ABOUT ME</p>
       <h1 class="intro-heading">A digital corner for the spaces I come alive in.</h1>
+
       <p class="intro-copy">
-        Hi, I’m Hamsa. I’m a Computer Science and Neuroscience student who is deeply drawn to music,
-        performance, creativity, travel, and meaningful experiences. I wanted this site to feel like
-        more than a class assignment. I wanted it to feel like a real reflection of me — dark, bold,
-        expressive, and full of motion. Some parts of me show up through music and performance, some
-        through coding and building, some through the places I travel to, and some through the memories
-        and visuals I collect along the way.
+        Hi, I’m Hamsa! I’m a Computer Science and Neuroscience student who loves building things
+        that feel both technically sharp and deeply human. A lot of the work I’m most drawn to sits
+        at the intersection of AI, systems thinking, and real-world impact — especially agentic workflows,
+        machine learning pipelines, and tools that make complex processes feel more seamless and intelligent.
       </p>
+
       <p class="intro-copy">
-        I love the intersection of structure and feeling. Computer science gives me a way to create,
-        problem-solve, and build systems that make ideas real. Neuroscience gives me a way to think
-        about people more deeply — memory, attention, emotion, and what shapes the way we experience
-        the world. Beyond academics, I’m someone who notices atmosphere: color, sound, architecture,
-        movement, and the small details that make a moment memorable.
+        I’m especially excited by projects where software does more than function — where it can adapt,
+        reason, automate thoughtfully, and support people in meaningful ways. That’s part of why I enjoy
+        AI projects in spaces like health tech and workflow automation. I’m interested in how intelligent
+        systems can reduce friction, improve decision-making, and create better human experiences, especially
+        when paired with an understanding of behavior, memory, and the brain.
       </p>
+
       <p class="intro-copy">
-        This website is built around those different sides of me. It’s part portfolio, part visual
-        diary, part personal archive. The sections below represent the spaces where I feel most like
-        myself: where I perform, where I create, where I build, where I collect, where I wander, and
-        where I think.
+        Outside of code, I’m someone who feels deeply connected to music, travel, performance, and visual
+        atmosphere. I notice color, sound, movement, and the details that make a moment memorable. This site
+        reflects all of those different sides of me — the builder, the performer, the observer, the collector,
+        and the person constantly curious about both people and technology.
       </p>
-    </section>
+    </div>
 
-    <section id="facets" class="facet-preview container">
-      <div class="section-head">
-        <p class="section-label">WHERE I...</p>
-        <h2>The different spaces that shape me</h2>
+    <div class="about-photo-card">
+      <img src="images/profile.jpg" alt="Portrait of Hamsa" class="about-photo">
+      <div class="about-photo-caption">
+        <p class="caption-label">CURRENTLY INTO</p>
+        <p class="caption-text">agentic AI, ML pipelines, health-tech workflows, music, motion, and places that feel cinematic.</p>
       </div>
-
-      <div class="facet-cards">
-        <article class="facet-card">
-          <span class="facet-tag">01</span>
-          <h3>Where I Perform</h3>
-          <p>Music, performance, confidence, emotion, and the energy of live expression.</p>
-        </article>
-
-        <article class="facet-card">
-          <span class="facet-tag">02</span>
-          <h3>Where I Create</h3>
-          <p>Color, aesthetics, visuals, design, and the spaces where creativity feels alive.</p>
-        </article>
-
-        <article class="facet-card">
-          <span class="facet-tag">03</span>
-          <h3>Where I Build</h3>
-          <p>Code projects, technical ideas, systems thinking, and turning concepts into something real.</p>
-        </article>
-
-        <article class="facet-card">
-          <span class="facet-tag">04</span>
-          <h3>Where I Collect</h3>
-          <p>Photos, moments, playlists, snapshots, and the memories I want to keep close.</p>
-        </article>
-
-        <article class="facet-card">
-          <span class="facet-tag">05</span>
-          <h3>Where I Wander</h3>
-          <p>Travel, cities, airports, movement, and the perspective that comes from going somewhere new.</p>
-        </article>
-
-        <article class="facet-card">
-          <span class="facet-tag">06</span>
-          <h3>Where I Think</h3>
-          <p>Neuroscience, reflection, curiosity, and the questions that stay with me.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="image-strip-section container">
-      <div class="section-head">
-        <p class="section-label">SNAPSHOTS</p>
-        <h2>Visual pieces of my world</h2>
-      </div>
-
-      <div class="image-strip">
-        <img src="images/stage.jpg" alt="Performance image">
-        <img src="images/travel1.jpg" alt="Travel image">
-        <img src="images/code.jpg" alt="Code or workspace image">
-        <img src="images/art.jpg" alt="Creative or art image">
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section container">
-      <div class="section-head">
-        <p class="section-label">CONTACT</p>
-        <h2>Find me here</h2>
-      </div>
-
-      <div class="contact-box">
-        <p>This is my digital corner, but you can reach me beyond it too.</p>
-        <div class="contact-links">
-          <a href="mailto:yourname@example.com">Email</a>
-          <a href="https://www.instagram.com/yourusername/" target="_blank">Instagram</a>
-          <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-          <a href="https://www.linkedin.com/in/yourusername/" target="_blank">LinkedIn</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>HAMSA / DIGITAL CORNER</p>
-  </footer>
-</body>
-</html>
+    </div>
+  </div>
+</section>
